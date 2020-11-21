@@ -1,10 +1,10 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-<h1>Items</h1>
-<div class="items">
+<h1 class="">Items</h1>
+<div class="row">
     {% for item in items %}
-    <div class="item">
+    <div class="col-sm-3">
         <div class="card" style="width: 12rem;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
@@ -15,10 +15,10 @@
               <li class="list-group-item">Price: {{ item.price }}</li>
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">Buy</a>
+              <a href="{% url 'item:details' slug=item.slug %}" class="card-link">Buy</a>
               <a href="#" class="card-link">Add to cart</a>
             </div>
-          </div>
+        </div>
     </div>
     {% endfor %}
 
