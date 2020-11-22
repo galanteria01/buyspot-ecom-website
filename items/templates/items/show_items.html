@@ -15,7 +15,7 @@
               <li class="list-group-item">Price: {{ item.price }}</li>
             </ul>
             <div class="card-body">
-              <a href="{% url 'item:details' slug=item.slug %}" class="card-link">Buy</a>
+              <a href="{% url 'items:details' slug=item.slug %}" class="btn btn-primary">Buy</a>
               <a href="#" class="card-link">Add to cart</a>
             </div>
         </div>
