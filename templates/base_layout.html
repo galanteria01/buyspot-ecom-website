@@ -19,15 +19,25 @@
         <div class="collapse navbar-collapse text-light" id="navbarTogglerDemo01">
           <a class="navbar-brand text-light text-uppercase" href="{% url 'items:list' %}"><img src="{% static 'ecom.png' %}" style="width: 50px;height: 50px;"></a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link text-light" href="#">Deals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Login</a>
+              <a class="nav-link text-light" href="#">View Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="#">Signup</a>
-              </li>
+              <a class="nav-link text-light" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-light" href="{% url 'accounts:login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'accounts:signup' %}">Signup</a>
+            </li>
+           
+          {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search">

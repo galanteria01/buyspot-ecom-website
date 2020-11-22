@@ -25,3 +25,8 @@ def login_view(request):
     elif request.method == "GET":
         form  = AuthenticationForm()
     return render(request,'accounts/login_page.html',{'form':form})
+
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+    return redirect('items:list')
