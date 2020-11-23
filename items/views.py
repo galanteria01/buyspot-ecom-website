@@ -10,4 +10,4 @@ def show_all(request):
 
 def show_item(request,slug):
     item = Item.objects.get(slug=slug)
-    return render(request,'items/single_item.html',{'item',item})
+    return render(request,'items/single_item.html',{'item':item})
