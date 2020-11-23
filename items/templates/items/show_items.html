@@ -6,11 +6,10 @@
 <div class="row">
     {% for item in items %}
     <div class="col-sm-3">
-        <div class="card" style="width: 12rem;">
-            <img src="{{ item.thumbnail.url }}" class="card-img-top" alt="Shoes">
+        <div class="card" style="width: 13rem;">
+            <img src="{{ item.thumbnail.url }}" class="card-img-top" alt="Shoes" style="width: 6rem;height: 6rem;margin-left: auto;margin-right: auto;">
             <div class="card-body">
               <h5 class="card-title">{{ item.productTitle }}</h5>
-              <p class="card-text">{{ item.snippet }}</p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Price: {{ item.price }}</li>
