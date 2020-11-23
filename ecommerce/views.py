@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 def show_home(request):
-    return render(request,'base_layout.html')
+    return redirect('items:list')

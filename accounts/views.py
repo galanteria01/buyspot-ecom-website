@@ -10,7 +10,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            return redirect('items.list')
+            return redirect('items:list')
     elif request.method == "GET":
         form = UserCreationForm()
     return render(request,'accounts/signup_page.html',{'form':form})
@@ -27,6 +27,6 @@ def login_view(request):
     return render(request,'accounts/login_page.html',{'form':form})
 
 def logout_view(request):
-    if request.method == "POST":
+    if request.method == "GET":
         logout(request)
     return redirect('items:list')
