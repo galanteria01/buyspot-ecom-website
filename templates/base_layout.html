@@ -20,41 +20,42 @@
         <div class="collapse navbar-collapse text-light" id="navbarTogglerDemo01">
           <a class="navbar-brand text-light text-uppercase" href="{% url 'items:list' %}"><img src="{% static 'ecom.png' %}" style="width: 50px;height: 50px;"></a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
           {% if user.is_authenticated %}
+
             <li class="nav-item">
               <a class="nav-link" href="#">Deals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">View Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">View Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+              <a class="nav-link" href="#">Today's Special</a>
             </li>
             
-           
+
           {% endif %}
+
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-3" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
           </form>
           <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
+
             {% if user.is_authenticated %}
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Username
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Show Profile</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">View Cart</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
               </div>
             </li>
+
             {% else %}
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 SignUp/Login
@@ -65,8 +66,10 @@
                 <a class="dropdown-item" href="{% url 'accounts:login' %}">Login</a>
               </div>
             </li>
+
             {% endif %}
           </ul>
+
         </div>
     </nav>
     <div class="contents">

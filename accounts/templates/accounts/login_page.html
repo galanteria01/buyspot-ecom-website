@@ -6,6 +6,7 @@
     <form class="site-form" action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
         {{ form }}
+        <br>
         <input class="btn btn-primary" type="submit" value="login"/>
     </form>
 </div>
