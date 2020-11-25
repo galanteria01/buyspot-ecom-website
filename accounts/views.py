@@ -32,7 +32,7 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            current_site = get_current_site(request)
+            current_site = request.get_current_site
             subject = 'Please Activate Your Account'
             # load a template like get_template() 
             # and calls its render() method immediately.
@@ -68,4 +68,4 @@ def logout_view(request):
 def user_details(request):
     current_user = request.user
     
-    return render(request,'user_details_page.html')
+    return render(request,'user_details_page.html',{'current_user',current_user})
