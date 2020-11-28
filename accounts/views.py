@@ -76,4 +76,4 @@ def logout_view(request):
 
 def user_details(request):
     current_user = request.user    
-    return render(request,'user_details_page.html',{'current_user',current_user})
+    return render(request,'accounts/user_details_page.html',{'current_user':current_user})

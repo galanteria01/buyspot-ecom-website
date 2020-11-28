@@ -47,7 +47,7 @@
                 {{ user.username }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Show Profile</a>
+                <a class="dropdown-item" href="{% url 'accounts:user' %}">Show Profile</a>
                 <a class="dropdown-item" href="#">View Cart</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
