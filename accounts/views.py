@@ -15,14 +15,14 @@ from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
 
 def activation_sent_view(request):
-    return render(request, 'activation_sent.html')
+    return render(request, 'accounts/activation_sent.html')
 
 
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except (TypeError, ValueError, OverflowError):
         user = None
     # checking if the user exists, if the token is valid.
     if user is not None and account_activation_token.check_token(user, token):
@@ -41,7 +41,7 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            current_site = request.get_current_site
+            current_site = get_current_site(request)
             subject = 'Please Activate Your Account'
             # load a template like get_template() 
             # and calls its render() method immediately.

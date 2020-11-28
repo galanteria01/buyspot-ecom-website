@@ -8,6 +8,6 @@ urlpatterns = [
     path('login',views.login_view,name="login"),
     path('logout',views.logout_view,name="logout"),
     path('user',views.user_details,name="user"),
-    path('sent/', views.activation_sent_view, name="activation_sent"),
+    path('sent', views.activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', views.activate, name='activate'),
 ]
