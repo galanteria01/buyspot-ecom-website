@@ -9,5 +9,6 @@ body{
 .navbar{
     text-transform: uppercase;
     font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.6)!important;
 
 }
