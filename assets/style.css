@@ -2,6 +2,9 @@
 
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('./background.svg');
+    overflow-y: scroll;
+    
 }
 .navbar{
     text-transform: uppercase;
