@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
+    # Manual created apps
+    'items',
+    'accounts',
+
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
     'oscar.apps.checkout.apps.CheckoutConfig',
@@ -81,9 +85,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_tables2',
 
-    # Manual created apps
-    'items',
-    'accounts',
+    
 ]
 
 SITE_ID = 1
@@ -116,7 +118,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'oscar.apps.search.context_processors.search_form',
                 'oscar.apps.checkout.context_processors.checkout',
-                'oscar.apps.customer.notifications.context_processors.notifications',
+                #'oscar.apps.customer.notifications.context_processors.notifications',
                 'oscar.core.context_processors.metadata',
             ],
         },
