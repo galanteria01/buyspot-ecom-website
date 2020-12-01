@@ -10,7 +10,7 @@ def search_result(request):
 
         submitbutton = request.GET.get('submit')
         if query is not None:
-            lookups = Q(productTitle=query) | Q(about=query)
+            lookups = Q(productTitle__icontains=query) | Q(about__icontains=query)
 
             results = Item.objects.filter(lookups).distinct()
 
