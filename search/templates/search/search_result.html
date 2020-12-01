@@ -1,23 +1,32 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-<h1 class="text-center">Search</h1>
 {% if submitbutton == 'Search' or request.GET.q != '' %}
 {% if results %}
-<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<h1 class="text-center">Results for <b>{{ request.GET.q }}</b></h1>
 <br/><br/>
 
 {% for result in results %}
 
-{{result.productTitle}}
-<br/>
-
-{{result.about}}
-<br/>
+<div class="col-sm-3">
+    <div class="card" style="width: 13rem;">
+        <img src="{{ result.thumbnail.url }}" class="card-img-top" alt="Shoes" style="width: 6rem;height: 6rem;margin-left: auto;margin-right: auto;">
+        <div class="card-body">
+          <h5 class="card-title">{{ result.productTitle }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Price: {{ result.price }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'items:details' slug=result.slug %}" class="btn btn-primary">Buy</a>
+          <a href="#" class="card-link">Add to cart</a>
+        </div>
+    </div>
+</div>
 
 {% endfor %}
 {% else %}
-No search results for this query
+<div class="text-center display-3"> No search results for this query </div>
 {% endif %}
 {% endif %}
 
