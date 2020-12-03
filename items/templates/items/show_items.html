@@ -16,7 +16,7 @@
               </ul>
               <div class="card-body">
                 <a href="{% url 'items:details' slug=item.slug %}" class="btn btn-primary">Buy</a>
-                <a href="#" class="card-link">Add to cart</a>
+                <a href="{% url 'cart:addCart' itemID=item.itemID %}" class="card-link">Add to cart</a>
               </div>
           </div>
       </div>
