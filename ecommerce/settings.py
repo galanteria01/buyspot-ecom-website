@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     # Manual created apps
     'items',
     'accounts',
-    'search'
+    'search',
+    'cart'
 
 
     
