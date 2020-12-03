@@ -19,4 +19,4 @@ def remove_from_cart(request):
     return
 
 def view_cart(request):
-    return
+    return render(request,'cart/view_cart.html')
