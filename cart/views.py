@@ -7,16 +7,15 @@ from items.models import Item
 # Create your views here.
 
 @login_required
-def add_to_cart(request,itemID):
-    item = get_object_or_404(Item, pk=itemID)
-    cart,created = Item.objects.get_or_create(user=request.user, active=True)
+def add_to_cart(request):
+    #item = get_object_or_404(Item, pk=itemID)
+    #cart,created = Item.objects.get_or_create(user=request.user, active=True)
     
     messages.success(request, "Cart updated!")
-    return redirect('items:list')
+    return render(request,'cart/view_cart.html')
 
 
 def remove_from_cart(request):
-    return
-
+    return render(request,'cart/view_cart.html')
 def view_cart(request):
     return render(request,'cart/view_cart.html')
