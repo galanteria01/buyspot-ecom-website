@@ -28,7 +28,7 @@ def add_to_cart(request,**kwargs):
     if item in request.user.profile.items.all():
         messages.info(request,"You already have this product")
         return redirect('items:list')
-    order_item,status = OrderItem.objects.get_or_create(product=item)
+    order_item,status = orderItem.objects.get_or_create(product=item)
     user_order, status = Order.objects.get_or_create(owner=user_profile, is_ordered=False)
     user_order.items.add(order_item)
     if status:
@@ -37,11 +37,11 @@ def add_to_cart(request,**kwargs):
         user_order.save()
     # show confirmation message and redirect back to the same page
     messages.info(request, "item added to cart")
-    return redirect('items:list')
+    return redirect(reverse('items:list'))
 
 @login_required()
 def delete_from_cart(request, item_id):
-    item_to_delete = OrderItem.objects.filter(pk=item_id)
+    item_to_delete = orderItem.objects.filter(pk=item_id)
     if item_to_delete.exists():
         item_to_delete[0].delete()
         messages.info(request, "Item has been deleted")
