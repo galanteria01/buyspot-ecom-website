@@ -15,7 +15,7 @@ urlpatterns = [
     path('items/',include('items.urls')),
     path('accounts/',include('accounts.urls')),
     #path('transactions/',include('transactions.urls')),
-    path('cart/',include('cart.urls')),
+    path('shopping_cart/',include('shopping_cart.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
