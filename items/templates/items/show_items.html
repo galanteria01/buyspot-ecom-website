@@ -2,21 +2,25 @@
 
 {% block content %}
 <div class="container">
-  <h2 class="text-center">Items</h2>
   <div class="row">
       {% for item in items %}
       <div class="col-sm-3">
-          <div class="card" style="width: 13rem;">
+          <div class="card" style="width: 20rem;">
               <img src="{{ item.thumbnail.url }}" class="card-img-top" alt="Shoes" style="width: 6rem;height: 6rem;margin-left: auto;margin-right: auto;">
               <div class="card-body">
-                <h5 class="card-title">{{ item.productTitle }}</h5>
+                <h5 class="card-title text-center">{{ item.productTitle }}</h5>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: {{ item.price }}</li>
               </ul>
               <div class="card-body">
                 <a href="{% url 'items:details' slug=item.slug %}" class="btn btn-primary">Buy</a>
-                <a href="{% url 'shopping_cart:add_to_cart' item_id=item.itemID %}" class="card-link">Add to cart</a>
+                {% if object in current_order_products %}
+                <a href="{% url 'shopping_cart:remove_from_cart' item_id=item.itemID %}" class="card-link">Remove from cart</a>
+                {% else %}
+                <a href="{% url 'shopping_cart:add_to_cart' item_id=item.itemID %}" class="card-link">Add from cart</a>
+                {% endif %}
+
               </div>
           </div>
       </div>

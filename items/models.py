@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Item(models.Model):
     productTitle = models.CharField(max_length=30)
-    itemID = models.AutoField(primary_key=True,unique=True)
+    itemID = models.AutoField(primary_key=True,unique=True,verbose_name="itemID")
     slug = models.SlugField()
     price = models.BigIntegerField()
     about = models.TextField()
