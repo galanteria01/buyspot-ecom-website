@@ -6,10 +6,12 @@ from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.models import Profile
 from items.models import Item
-from .models import orderItem, Order
+from .models import orderItem, Order,Transaction
 from .extras import generate_order_id
+from ecom import settings
 import datetime
 import stripe
+from .extras import*
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -58,4 +60,72 @@ def order_summary(request,**kwargs):
     }
     return render(request,'shopping_cart/order_summary.html',context)
 
+
+@login_required
 def checkout(request,**kwargs):
+    client_token = generate_client_token()
+    existing_order = get_user_pending_order(request)
+    publishKey = settings.STRIPE_PUBLISHABLE_KEY
+    if request.method == 'POST':
+        token = request.POST.get('stripeToken',False)
+        if token:
+            try:
+                charge = stripe.Charge.create(
+                    amount = 100*existing_order.get_cart_total(),
+                    current='inr',
+                    description="Example charge",
+                    source=token,
+                )
+                return redirect(reverse('shopping_cart:update_records',kwargs={'token':token}))
+            except Exception as e:
+                messages.info(request,"Your card has been declined,{e}")
+            
+        else:
+            result = transact({
+                'amount':existing_order.get_cart_total(),
+                'payment_method_nonce':request.POST['payment_method_nonce'],
+                'options':{"submit_for_settlement":True}
+            })
+            if result.is_success or result.transaction:
+                return redirect(reverse('shopping_cart:update_records',kwargs={'token': result.transaction.id}))
+            else:
+                for x in result.errors.deep_errors:
+                    messages.info(request,x)
+                return redirect(reverse('shopping_cart:checkout'))
+        context = {
+            'order':existing_order,
+            'client_token':client_token,
+            "STRIPE_PUBLISHABLE_KEY":publishKey
+        }
+        return render(request,'shopping_cart/checkout.html',context)
+
+@login_required
+def update_transactions_records(request,token):
+    order_to_purchase = get_user_pending_order(request)
+    order_to_purchase.is_ordered = True
+    order_to_purchase.date_ordered = datetime.datetime.now()
+    order_to_purchase.save()
+
+    order_items = order_to_purchase.items.all()
+    order_items.update(is_ordered=True,date_ordered=datetime.datetime.now())
+
+    user_profile = get_object_or_404(Profile,user=request.user)
+    order_products = [item.product for item in order_items]
+    user_profile.items.add(*order_products)
+    user_profile.save()
+
+    transaction = Transaction(profile=request.user.profile,
+                            token=token,
+                            order_id=order_to_purchase.id,
+                            amount=order_to_purchase.get_cart_total(),
+                            success=True)
+    transaction.save()
+
+    messages.info(request,"Thank you! Purchase is successful")
+    return redirect(reverse('accounts:user_details'))
+
+
+
+def success(request, **kwargs):
+    # a view signifying the transcation was successful
+    return render(request, 'shopping_cart/purchase_success.html', {})
