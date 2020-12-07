@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'search',
     'shopping_cart',
+    'stripe'
 
 
     
@@ -158,3 +159,17 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+if DEBUG:
+    # test keys
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
+    BT_ENVIRONMENT='sandbox'
+    BT_MERCHANT_ID='YOUR BT_MERCHANT_ID'
+    BT_PUBLIC_KEY='YOUR BT_PUBLIC_KEY'
+    BT_PRIVATE_KEY='YOUR BT_PRIVATE_KEY'
+else:
+    # live keys
+    STRIPE_PUBLISHABLE_KEY = 'YOUR STRIPE LIVE PUB KEY'
+    STRIPE_SECRET_KEY = 'YOUR STRIPE LIVE SECRET KEY'
+

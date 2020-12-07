@@ -8,6 +8,10 @@ from accounts.models import Profile
 from items.models import Item
 from .models import orderItem, Order
 from .extras import generate_order_id
+import datetime
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 
@@ -53,3 +57,5 @@ def order_summary(request,**kwargs):
         'order':existing_order
     }
     return render(request,'shopping_cart/order_summary.html',context)
+
+def checkout(request,**kwargs):
