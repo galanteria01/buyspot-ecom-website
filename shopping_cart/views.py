@@ -8,7 +8,7 @@ from accounts.models import Profile
 from items.models import Item
 from .models import orderItem, Order,Transaction
 from .extras import generate_order_id
-from ecom import settings
+from ecommerce import settings
 import datetime
 import stripe
 from .extras import*
@@ -127,5 +127,5 @@ def update_transactions_records(request,token):
 
 
 def success(request, **kwargs):
-    # a view signifying the transcation was successful
+    # a view signifying the transaction was successful
     return render(request, 'shopping_cart/purchase_success.html', {})
