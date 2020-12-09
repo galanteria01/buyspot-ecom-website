@@ -8,9 +8,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import settings
 from django.conf.urls.static import static
 
+app_name = "ecommerce"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.show_home),
+    path('',views.show_home,name="home"),
+    path('deals/',views.show_deals,name="deals"),
     path('search/',include('search.urls')),
     path('items/',include('items.urls')),
     path('accounts/',include('accounts.urls')),

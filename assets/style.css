@@ -4,10 +4,15 @@ body{
     font-family: Arial, Helvetica, sans-serif
     
     
+    
 }
+
 .navbar{
     text-transform: uppercase;
-    font-weight: 700;
-    background-color: rgba(0, 0, 0, 0.6)!important;
+    font-weight: 700!important;
+    
 
+}
+.nav-item:hover{
+    color: cyan!important;
 }
