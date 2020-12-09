@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&family=Ranchers&display=swap');
 
 body{
     font-family: Arial, Helvetica, sans-serif
-    
-    
-    
 }
 
 .navbar{
@@ -15,4 +14,14 @@ body{
 }
 .nav-item:hover{
     color: cyan!important;
+}
+.display-2 .display-4{
+    font-family: 'Arvo', serif;
+    font-family: 'Lobster', cursive;
+
+
+}
+.col-sm-6{
+    padding: 0px auto;
+
 }
