@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'search',
     'shopping_cart',
-    'stripe'
+    'stripe',
 
 
     

@@ -5,3 +5,4 @@ def show_home(request):
 
 def show_deals(request):
     return redirect('items:list')
+
