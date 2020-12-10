@@ -24,7 +24,7 @@
         
         <nav class="navbar navbar-light bg-light justify-content-between">
           <a class="navbar-brand text-light text-uppercase" href="{% url 'items:list' %}"><img src="{% static 'ecom.png' %}" style="width: 50px;height: 50px;"></a>
-          <form class="form-inline">
+          <form class="form-inline" action="{% url 'search:search_result' %}" method="GET" value="{{request.GET.q}}">
             <input class="form-control mr-sm-3" size="40" type="search" placeholder="What are you looking for" aria-label="Search" name="q" value="{{request.GET.q}}">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="Search"><img src="{% static 'search.png' %}" style="height: 1.6rem;"></button>
           </form>
