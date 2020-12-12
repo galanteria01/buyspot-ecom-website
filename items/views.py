@@ -24,7 +24,6 @@ def show_all(request):
         'items': items,
         'current_order_products': current_order_products
     }
-
     return render(request, 'items/show_items.html', context)
 
 

@@ -3,13 +3,14 @@
 {% block content %}
 
 <div class="item container">
-    <h1 class="font-weight-bold text-center">{{item.productTitle }}</h1>
-    <p class="text-center">{{ item.date }}</p>
+    
     <div class="row">
-        <div class="item-image col-sm-4 align-middle">
-            <img class="rounded d-block" src="{{ item.thumbnail.url }}">
+        <div class="item-image col-sm-6 align-middle py-5">
+            <img class="rounded d-block" src="{{ item.thumbnail.url }}" style="height:30rem;">
         </div>
-        <div class="item-about col-sm-8">
+        <div class="item-about col-sm-6">
+            <h1 class="font-weight-bold text-center">{{item.productTitle }}</h1>
+            <p class="text-center">{{ item.date }}</p>
             <h4 class="text-center">About product-</h4>
             <h6>{{ item.about }}</h6>
             <h4 class="text-center">Price- {{ item.price }}</h4>

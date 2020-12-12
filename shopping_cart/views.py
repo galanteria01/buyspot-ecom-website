@@ -53,6 +53,7 @@ def delete_from_cart(request, item_id):
         messages.info(request, "Item has been deleted")
     return redirect(reverse('shopping_cart:order_summary'))
 
+@login_required
 def order_summary(request,**kwargs):
     existing_order = get_user_pending_order(request)
     context = {

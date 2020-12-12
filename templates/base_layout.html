@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
     {% block head %}
     {% endblock head %}
-
-
+    
     {% block style %}
 
     {% endblock style %}
@@ -22,17 +21,17 @@
   </head>
   <body>
     <section class="header">
-      <div class="container-fluid">
         
-        <nav class="navbar navbar-light justify-content-between" style="color:#fff;background-color:#1abc9c">
-          <a class="navbar-brand text-light text-uppercase" href="{% url 'items:home' %}"><img src="{% static 'ecom.png' %}" style="width: 50px;height: 50px;"></a>
+        <nav class="navbar navbar-expang navbar-light justify-content-between" style="color:#fff;background-color:#1abc9c">
+          <div class="container-fluid">
+          <a class="navbar-brand text-light text-uppercase px-3" href="{% url 'items:home' %}"><img src="{% static 'ecom.png' %}" style="width: 40px;height: 40px;"></a>
           <form class="form-inline" action="{% url 'search:search_result' %}" method="GET" value="{{request.GET.q}}">
-            <input class="form-control mr-sm-3" size="40" type="search" placeholder="What are you looking for" aria-label="Search" name="q" value="{{request.GET.q}}">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="Search"><img src="{% static 'search.png' %}" style="height: 1.6rem;"></button>
+            <input class="form-control mr-sm-3" size="60" type="search" placeholder="What are you looking for" aria-label="Search" name="q" value="{{request.GET.q}}">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="Search"><img src="{% static 'search.png' %}" style="height: 1.2rem;"></button>
           </form>
+        </div>
+
         </nav>
-      </div>
-    </section>
     <nav class="navbar navbar-expand-lg navbar-light" style="color:#fff;background-color:#1abc9c">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,6 +89,8 @@
         </div>
         </div>
     </nav>
+  </section>
+
     {% include 'messages.html' %}
     <div class="contents">
         {% block content %}

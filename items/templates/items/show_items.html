@@ -1,29 +1,66 @@
 {% extends 'base_layout.html' %}
 
+{% block style %}
+<style>
+  *{
+    ;
+  }
+  .filters{
+    border-right: 0.5px solid grey;
+  }
+  li a{
+    text-decoration: none;
+    color: black;
+  }
+  li a:hover{
+    text-decoration: none;
+    color: grey;
+  }
+</style>
+{% endblock style %}
+
+
+
 {% block content %}
-<div class="container">
+<div class="container-fluid">
   <div class="row">
+    <div class="filters col-sm-2 text-center py-4">
+      <h3>Filters</h3>
+      <ul>
+        <li><a href="#">Rating</a></li>
+        <li><a href="#">Low to high</a></li>
+        <li><a href="#">High to low</a></li>
+        <li><a href="#">Popularity</a></li>
+      </ul>
+    </div>
       {% for item in items %}
-      <div class="col-sm-3" style="padding: 1rem;">
-          <div class="card">
+      <div class="col-sm-2" style="padding: 1rem;">
+          <div class="card card-deck">
               <img src="{{ item.thumbnail.url }}" class="card-img-top" alt="Shoes" style="padding:5px;">
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <h5 class="card-title text-center">{{ item.productTitle }}</h5>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: {{ item.price }}</li>
-              </ul>
+              </ul> -->
+
+              <div class="card-body">
+                <h5 class="card-title">{{ item.productTitle }}</h5>
+                <h6 class="card-subtitle text-muted">Price: {{ item.price }}</h6>
+              </div>
               <div class="card-body">
                 <a href="{% url 'items:details' slug=item.slug %}" class="btn btn-primary">Buy</a>
                 {% if object in current_order_products %}
                 <a href="{% url 'shopping_cart:remove_from_cart' item_id=item.itemID %}" class="card-link">Remove from cart</a>
-                {% else %}
-                <a href="{% url 'shopping_cart:add_to_cart' item_id=item.itemID %}" class="card-link">Add from cart</a>
+                {% elif object not in current_order_products %}
+                <a href="{% url 'shopping_cart:add_to_cart' item_id=item.itemID %}" class="card-link">Add to cart</a>
                 {% endif %}
 
               </div>
           </div>
       </div>
+
+      
       {% endfor %}
 
   </div>
