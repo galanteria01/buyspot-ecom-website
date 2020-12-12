@@ -11,7 +11,7 @@ from .extras import generate_order_id
 from ecommerce import settings
 import datetime
 import stripe
-from .extras import*
+from .extras import *
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
