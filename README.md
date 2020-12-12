@@ -7,7 +7,7 @@ Cart system
 And few more optimisations
 
 ## Clone
-<code>git clone https://github.com/galanteria01/buyspot-ecom-website.git</code><br>
+<code>git clone https://github.com/galanteria01/buyspot-ecom-website.git -b master</code><br>
 
 ## Setting up local environment
 <code>python3 -m venv buyspot</code><br>
