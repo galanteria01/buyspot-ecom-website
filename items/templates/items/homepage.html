@@ -3,24 +3,33 @@
 
 {% block style %}
 <style>
-    *{
-    }
-    
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+  body{
+    background-image: url("{% static 'backg.jpg' %}");
+    background-position-y: -5rem;
+    overflow-x: hidden;
+
+  }
+  h1{
+    position: relative;
+    top: 3em;
+    left:3em;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 60px;
+
+  }
+  h2{
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+    top: 7em;
+    left: 7em;
+  }
 
 </style>
 
 {% endblock style %}
 
 {% block content %}
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item">
-            <img src="{% static 'backg.jpg' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </div>
-          </div>
-        </div>
-      </div>
+    <h1>Shoes that fits</h1>
+    <h2>And looks amazing</h2>
 {% endblock content %}
