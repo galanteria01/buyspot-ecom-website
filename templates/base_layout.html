@@ -21,10 +21,10 @@
     <title>Shoe App</title>
   </head>
   <body>
-    <section header>
+    <section class="header">
       <div class="container-fluid">
         
-        <nav class="navbar navbar-light bg-light justify-content-between">
+        <nav class="navbar navbar-light justify-content-between" style="color:#fff;background-color:#1abc9c">
           <a class="navbar-brand text-light text-uppercase" href="{% url 'items:home' %}"><img src="{% static 'ecom.png' %}" style="width: 50px;height: 50px;"></a>
           <form class="form-inline" action="{% url 'search:search_result' %}" method="GET" value="{{request.GET.q}}">
             <input class="form-control mr-sm-3" size="40" type="search" placeholder="What are you looking for" aria-label="Search" name="q" value="{{request.GET.q}}">
@@ -33,7 +33,7 @@
         </nav>
       </div>
     </section>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="color:#fff;background-color:#1abc9c">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
