@@ -37,10 +37,13 @@ def add_to_cart(request,**kwargs):
     order_item,status = orderItem.objects.get_or_create(product=item)
     user_order, status = Order.objects.get_or_create(owner=user_profile, is_ordered=False)
     user_order.items.add(order_item)
+    messages.add_message(request,messages.INFO,status)
+
     if status:
         # generate a reference code
         user_order.ref_code = generate_order_id()
         user_order.save()
+
     # show confirmation message and redirect back to the same page
     messages.add_message(request,messages.INFO,"Item added to cart")
     return redirect(reverse('items:list'))

@@ -2,8 +2,8 @@
 
 {% block content %}
 <h1>Hello cart bish</h1>
-{% for order in existing_order %}
-<h1>{{ order.date_ordered }}</h1>
+{% for item in order.get_cart_items %}
+<h1>{{ order.product.productTitle }}</h1>
 {% endfor %}
 
 {% endblock content %}
