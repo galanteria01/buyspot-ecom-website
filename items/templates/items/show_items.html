@@ -52,7 +52,7 @@
                 <a href="{% url 'items:details' slug=item.slug %}" class="btn btn-primary">Buy</a>
                 {% if object in user.profile.items.all %}
                   <a href="#" class="card-link">View cart</a>
-                {% elif object in current_order_products %}
+                {% elif object in context.current_order_products %}
                   <a href="{% url 'shopping_cart:remove_from_cart' item_id=item.itemID %}" class="card-link">Remove from cart</a>
                 {% else %}
                   <a href="{% url 'shopping_cart:add_to_cart' item_id=item.itemID %}" class="card-link">Add to cart</a>
